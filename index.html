@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeriia &amp; Valerii's Graduation Picnic — June 6, 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --mn-blue: #003865;
+            --mn-green: #78BE21;
+            --mn-teal: #008EAA;
+            --mn-dark-gray: #53565A;
+            --mn-medium-gray: #97999B;
+            --mn-light-gray: #D9D9D6;
+            --white: #FFFFFF;
+            --black: #000000;
+            --bg: #f7f9fa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--black);
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            background: var(--mn-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            z-index: 200;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 0 0 8px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .hero {
+            background: var(--mn-blue);
+            color: var(--white);
+            padding: 1rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        .highlight-box {
+            background: var(--white);
+            border-left: 6px solid var(--mn-green);
+            padding: 1rem;
+            margin: 1rem 1rem;
+            border-radius: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .highlight-box .date {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mn-blue);
+        }
+
+        .highlight-box .time {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        .highlight-box .venue {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--mn-dark-gray);
+        }
+
+        section {
+            padding: 1rem;
+        }
+
+        section h2 {
+            color: var(--mn-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--mn-green);
+        }
+
+        .map-container {
+            width: 100%;
+            border-radius: 0;
+            overflow: hidden;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+        }
+
+        .map-btn {
+            display: block;
+            width: 100%;
+            background: var(--mn-green);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 3px solid #5a9e10;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            box-shadow: 0 5px 0 #3d7a00, 0 6px 12px rgba(0,0,0,0.15);
+            transition: background 0.15s, box-shadow 0.1s, transform 0.1s;
+            cursor: pointer;
+        }
+
+        .map-btn:hover {
+            background: #6aae18;
+        }
+
+        .map-btn:focus-visible {
+            outline: 3px solid var(--mn-blue);
+            outline-offset: 3px;
+            background: #6aae18;
+        }
+
+        .map-btn:active {
+            background: #5a9e10;
+            box-shadow: 0 2px 0 #3d7a00;
+            transform: translateY(3px);
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 0;
+            padding: 1rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .info-card h3 {
+            color: var(--mn-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .picnic-section {
+            background: linear-gradient(135deg, var(--mn-blue) 0%, var(--mn-teal) 100%);
+            color: var(--white);
+            border-radius: 0;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .picnic-section h2 {
+            color: var(--white);
+            border-bottom-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .picnic-section .map-btn {
+            background: var(--mn-green);
+            color: var(--white);
+            border-color: #5a9e10;
+            box-shadow: 0 5px 0 #3d7a00, 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .picnic-section .map-btn:hover {
+            background: #6aae18;
+        }
+
+        .picnic-section .map-btn:focus-visible {
+            outline: 3px solid var(--white);
+            outline-offset: 3px;
+            background: #6aae18;
+        }
+
+        .food-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .food-list li {
+            padding: 0.4rem 0;
+            font-size: 1.1rem;
+        }
+
+        .food-list li::before {
+            content: "\2022 ";
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .park-map-section {
+            margin: 1.5rem 0 0;
+        }
+
+        .park-map-section h3 {
+            color: var(--mn-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .park-map-section p {
+            margin-bottom: 0.75rem;
+        }
+
+        .parking-note {
+            background: #e8f5e9;
+            border-left: 5px solid var(--mn-green);
+            padding: 1rem 1.2rem;
+            margin: 1.2rem 0 0;
+        }
+
+        .parking-note h3 {
+            color: var(--mn-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .parking-note p {
+            font-size: 1rem;
+        }
+
+        .bring-note {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 0;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 1.5rem 1rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-left: 3px solid var(--mn-blue);
+            padding-left: 1rem;
+        }
+
+        .timeline-item .time-badge {
+            background: var(--mn-blue);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            min-width: 5rem;
+            text-align: center;
+        }
+
+        .timeline-item .desc {
+            font-size: 1.05rem;
+        }
+
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--mn-blue);
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            gap: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-bar a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+            opacity: 0.85;
+            border-bottom: 3px solid transparent;
+            transition: opacity 0.2s, border-color 0.2s;
+        }
+
+        .nav-bar a:hover,
+        .nav-bar a:focus {
+            opacity: 1;
+            border-bottom-color: var(--mn-green);
+        }
+
+        .nav-bar a:active {
+            opacity: 1;
+            border-bottom-color: var(--mn-green);
+        }
+
+        section, .timeline, .highlight-box, .parking-note {
+            scroll-margin-top: 52px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--mn-dark-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--mn-green);
+            outline-offset: 2px;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .map-container iframe {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="hero">
+        <h1>🎉 You're Invited!</h1>
+        <p class="subtitle">Valeriia &amp; Valerii's Graduation Picnic</p>
+    </header>
+
+    <nav class="nav-bar" aria-label="Main navigation">
+        <a href="#details">📅 Details</a>
+        <a href="#schedule">⏰ Schedule</a>
+        <a href="#location">🗺️ Location</a>
+        <a href="#parking">🅿️ Parking</a>
+        <a href="#food">🍔 Food</a>
+    </nav>
+
+    <main id="main">
+
+        <div id="details" class="highlight-box">
+            <div class="date">Saturday, June 6, 2026</div>
+            <div class="time">Starting at 4:00 PM</div>
+            <div class="venue">Shelter A (Beaver)<br>5194 N Mississippi Dr, Minneapolis, MN 55430</div>
+        </div>
+
+        <!-- SCHEDULE -->
+        <div id="schedule" class="timeline" role="list" aria-label="Event schedule">
+            <div class="timeline-item" role="listitem">
+                <span class="time-badge" aria-label="4:00 PM">4:00 PM</span>
+                <span class="desc">Guests arrive — picnic begins</span>
+            </div>
+            <div class="timeline-item" role="listitem">
+                <span class="time-badge" aria-label="4:30 PM">4:30 PM</span>
+                <span class="desc">Food &amp; drinks — time to mingle!</span>
+            </div>
+            <div class="timeline-item" role="listitem">
+                <span class="time-badge" aria-label="Evening">Evening</span>
+                <span class="desc">Games, music &amp; good vibes</span>
+            </div>
+        </div>
+
+        <!-- LOCATION -->
+        <section id="location">
+            <h2>🗺️ Location</h2>
+
+            <div class="info-card">
+                <h3>North Mississippi Regional Park</h3>
+                <p>
+                    <strong>Shelter A (Beaver)</strong><br>
+                    5194 N Mississippi Dr<br>
+                    Minneapolis, MN 55430
+                </p>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    title="Map showing 5194 N Mississippi Dr, Shelter A (Beaver)"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.3!2d-93.2861601!3d45.0490469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52b331c3c46d9409%3A0x503e7c6453469e64!2s5194%20N%20Mississippi%20Dr%2C%20Minneapolis%2C%20MN%2055430!5e0!3m2!1sen!2sus!4v1700000000000"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <a class="map-btn" href="https://www.google.com/maps/place/5194+N+Mississippi+Dr,+Minneapolis,+MN+55430/@45.0490469,-93.2861601,17z/data=!3m1!4b1!4m5!3m4!1s0x52b331c3c46d9409:0x503e7c6453469e64!8m2!3d45.0490469!4d-93.2835852?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Open Shelter A Beaver at 5194 N Mississippi Dr in Google Maps (opens in new tab)" role="button">
+                📍 Open in Google Maps
+            </a>
+
+            <div class="park-map-section" aria-labelledby="park-map-heading">
+                <h3 id="park-map-heading">🗺️ Park Map</h3>
+                <p>Look for <strong>Shelter A (Beaver)</strong> on the map below.</p>
+                <div class="map-container">
+                    <img
+                        src="park-map.png"
+                        alt="North Mississippi Regional Park map showing shelters A (Beaver), B (Turtle), C (Large Log Shelter), D (Eagle), parking lots along Lyndale Ave N, and the Mississippi River"
+                        style="width:100%; height:auto; display:block;"
+                    />
+                </div>
+            </div>
+
+            <div class="parking-note" id="parking">
+                <h3>🅿️ Parking</h3>
+                <p>Closest parking is right in front of <strong>Shelters A &amp; B</strong> — look for the lots along <strong>Lyndale Ave. N.</strong> There are three parking areas marked on the map above.</p>
+            </div>
+        </section>
+
+        <!-- FOOD & DRINKS -->
+        <section id="food">
+            <div class="picnic-section">
+                <h2>🍔 Food &amp; Drinks</h2>
+
+                <p style="font-size: 1.15rem; margin-bottom: 1rem;">We'll provide food and drinks for everyone:</p>
+
+                <ul class="food-list" aria-label="Food and drinks provided">
+                    <li>🍔 Burgers</li>
+                    <li>🌭 Hotdogs</li>
+                    <li>🍟 Snacks</li>
+                    <li>🍎 Fruits</li>
+                    <li>🥦 Veggies</li>
+                    <li>🍻 Beer, cider &amp; soft drinks</li>
+                </ul>
+
+                <div class="bring-note" role="note">
+                    <strong>Feel free to bring anything you'd like!</strong><br>
+                    Your favorite dish, a dessert, a game — whatever makes it more fun for you.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>🎓 Valeriia &amp; Valerii — Class of 2026</p>
+        <p>We really hope you can make it!</p>
+    </footer>
+
+</body>
+</html>
